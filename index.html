@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en" `>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.js"></script>
+    <script src="http://ajax.microsoft.com/ajax/jquery.validate/1.7/additional-methods.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="js/game.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/Login.js" ></script>
+    <script src="js/Welcome.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <title>Pacman - Noah&Yoni</title>
+</head>
+<body bgcolor="black" background="pic/logo.png">
+<div id="myMenunav">
+    <ul>
+        <li> <img src="pic/logo.png" height="15" width="42"> </li>
+        <li> Noah & Yoni inc - BadAss programing! </li>
+        <li><a id="manWelcome" data-toggle="modal" data-target="#welcomeModel">Welcome</a></li>
+        <li><a id="manRegister" data-toggle="modal" data-target="#registerModel">Register</a></li>
+        <li><a id="manLogin" data-toggle="modal" data-target="#LogInModel">Login</a></li>
+        <li><a id="manAbout" data-toggle="modal" data-target="#myModal">About</a></li>
+    </ul>
+</div>
+<div id="welcomeModel" class="modal fade" role="dialog">
+        <center>
+    <div class="modal-dialog" id="welcomeModelshow">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Welcome to Packmen Plus</h4>
+            </div>
+            <br/>
+            <button id="wel1bu" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-dismiss="modal" data-target="#registerModel">Register</button>
+            &nbsp;&nbsp;<br>
+            <br>
+            <button id="wel2bu" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-dismiss="modal" data-target="#LogInModel">Login</button>
+
+            <br/><br/>
+        </div>
+    </div>
+        </center>
+    </div>
+<div id="registerModel" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Registration</h4>
+                </div>
+                <center>
+                <form id="registration" name="registration" method="post" action="mailto:gameformmailbox@gmail.com" onsubmit="AddUserToArray(UserName,FirstName,LastName,Password,Email,Birthdate)">
+                    User Name:
+                    <input type="text" name="UserName" placeholder ="e.g Superman">
+                    <br>
+                    First Name:
+                    <input type="text" name="FirstName" placeholder="Mickey">
+                    <br>
+                    Last Name:
+                    <input type="text" name="LastName" placeholder="Mouse">
+                    <br>
+                    Password:
+                    <input type="password" name="Password" placeholder="8 chars and digits">
+                    <br>
+                    Email:
+                    <input type="email" name="Email" placeholder="myMail@example.com">
+                    <br>
+                    Birth date:
+                    <input type="date" name="Birthdate" placeholder="" min="1930-1-1">
+                    <br>
+                    <br>
+                    <input type="submit" value="Submit" >
+                </form>
+                </center>
+                <br/><br/>
+            </div>
+
+        </div>
+    </div>
+<div id="LogInModel" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Log in</h4>
+                </div>
+                <div class="modal-body">
+                    <center>
+                    User name:
+
+                        <input type="text" name="Username:" id="userNameCheck" />
+                    <br/>
+                    Password: <input type="text" name="Password:" id="passwordCheck" />
+                    <br/>
+                    <input type="submit" content="Login"  value="Login"  onclick="validateLogin(userNameCheck.value,passwordCheck.value)"/>
+                        <br/><br/><br/>
+                    </center>
+                </div>
+            </div>
+
+        </div>
+    </div>
+<div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">About Packmen</h4>
+                </div>
+                <div class="modal-body">
+                    <p> Our names: Noah Shogan Yoni Cohen
+                        <br>
+                        JQeury libs used: "jquery.validat" ,"jquery-ui".
+                        <br>
+                        Tough parts in the assignment: Learning how to use jquery libraries.
+                    </p><br/><br/>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+<div id="Game" class="frame">
+    <div id="gameData">
+        <br/>
+        User Name:
+        <input id="lbluserName" style="border: hidden;background-color: transparent" type="text" />
+        <br/>
+        SCORE:
+        <input id="lblScore" style="border: hidden;background-color: transparent" type="text" />
+        <br/>
+        TIME:
+        <input id="lblTime" style="border: hidden;background-color: transparent" type="text" />
+        <br/>
+        Live left:
+        <img src="pic/pacman.png" id = "life1" height="18px" width="18px">
+        <img src="pic/pacman.png" id = "life2" height="18px" width="18px">
+        <img src="pic/pacman.png" id = "life3" height="18px" width="18px">
+        <br/>
+        <input type="submit" value="new Game" data-toggle="modal" data-target="#gamePrefferences" onclick="newGame()">
+        <br/><br/>
+    </div>
+
+        <canvas id="canvas" height="522" width="504" ></canvas>
+
+</div>
+
+
+<div id="gamePrefferences" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Game Prefferences</h4>
+            </div>
+            <div id="dialog-form" class="frame" title="Game prefferences">
+                <center><br/>
+                    <label for="AMB">Amount of balls: </label>
+                    <input type="text" name="AMB" id="AMB" value="50" class="text ui-widget-content ui-corner-all">
+                    <br>
+                    <label for="time">Time: </label>
+                    <input type="text" name="time" id="time" value="60" class="text ui-widget-content ui-corner-all">
+                    <br>
+                    <label for="monsters">Amount of monsters: </label>
+                    <input type="text" name="monsters" id="monsters" value="2" class="text ui-widget-content ui-corner-all">
+                    <br>
+                    5 points ball color: <select id="smallBall" selected>
+                        <option value="blue">blue</option>
+                        <option value="red">red</option>
+                        <option value="green">green</option>
+                        <option value="orange">orange</option>
+                        <option value="aqua">aqua</option>
+                        <option gold="gold">gold</option>
+                        <option Seashell="Seashell">Seashell</option>
+                        <option Seashell="Plum"selected="selected">Plum</option>
+                    </select>
+                    <br>
+                    15 points ball color:<select id="midBall">
+                        <option value="blue" >blue</option>
+                        <option value="red">red</option>
+                        <option value="green">green</option>
+                        <option value="orange">orange</option>
+                        <option value="aqua">aqua</option>
+                        <option gold="gold" selected="selected">gold</option>
+                        <option Seashell="Seashell" >Seashell</option>
+                        <option Seashell="Plum">Plum</option>
+                    </select>
+                    <br>
+                    25 points ball color: <select id="bigBall">
+                        <option value="blue">blue</option>
+                        <option value="red">red</option>
+                        <option value="green">green</option>
+                        <option value="orange">orange</option>
+                        <option value="aqua" selected="selected">aqua</option>
+                        <option gold="gold">gold</option>
+                        <option Seashell="Plum">Plum</option>
+                    </select>
+                    <br/>
+                    Submit: <input type="submit" value="Submit" onclick="gotoGameDiv(smallBall.value,midBall.value,bigBall.value,AMB.value,monsters.value,time.value)"></input>
+                <br/><br/><br/>
+                </center>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+<div id="footer">
+     <i> Contect us yoninoahgame@gmail.com yoni:0528109625 noah: 0525253687</i>
+</div>
+<div id="loopaudiodiv" class="frame" hidden="true">
+    <audio loop="true" id="loopAudio">
+        <source src="sounds/theam.mp3" >
+    </audio>
+</div>
+
+</body>
+</html>
